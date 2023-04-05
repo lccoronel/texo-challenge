@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { HeaderContainer } from './styles'
+import { HeaderContainer, HeaderTitle } from './styles'
 
 export const Header: React.FC = () => {
   return (
     <HeaderContainer>
-      <h2>Frontend React Test</h2>
+      <HeaderTitle>Frontend React Test</HeaderTitle>
     </HeaderContainer>
   )
 }

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Title } from '../../atoms'
 
 export const HeaderContainer = styled.header`
   width: 100%;
@@ -7,9 +8,8 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   padding-left: 1rem;
+`
 
-  h2 {
-    color: ${({ theme }) => theme.color.white};
-    font-weight: 400;
-  }
+export const HeaderTitle = styled(Title.H2)`
+  color: ${({ theme }) => theme.color.white};
 `
