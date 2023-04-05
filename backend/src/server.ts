@@ -1,6 +1,8 @@
 import { app } from './app'
 import { env } from '@/env'
 
+import './database'
+
 app
   .listen({
     host: '0.0.0.0',
