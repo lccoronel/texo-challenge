@@ -5,6 +5,7 @@ export const MenuContainer = styled.div`
   background-color: ${({ theme }) => theme.color.gray100};
   height: 100%;
   width: 20rem;
+  min-width: 10rem;
 `
 
 export const Navigation = styled.nav`
