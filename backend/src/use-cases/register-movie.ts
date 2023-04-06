@@ -6,7 +6,7 @@ export class RegisterMovieUseCase {
   constructor(private moviesRepository: MoviesRepository) {}
 
   async execute(params: Movie) {
-    const moviesAlreadyExists = await this.moviesRepository.findbyTitle(
+    const moviesAlreadyExists = await this.moviesRepository.findByTitle(
       params.title,
     )
 

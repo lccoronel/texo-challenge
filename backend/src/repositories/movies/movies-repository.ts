@@ -1,6 +1,14 @@
 import { Movies, Prisma } from '@prisma/client'
 
+export interface MultipleWinnersByYearProps {
+  _count: {
+    winner: number
+  }
+  year: number
+}
+
 export interface MoviesRepository {
   create(data: Prisma.MoviesCreateInput): Promise<Movies>
-  findbyTitle(title: string): Promise<Movies | null>
+  findByTitle(title: string): Promise<Movies | null>
+  findMultipleWinnersByYear(): Promise<MultipleWinnersByYearProps | null>
 }
