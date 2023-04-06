@@ -1,12 +1,11 @@
 import React from 'react'
-import { Header } from '../../molecules/Header'
 import { Outlet } from 'react-router-dom'
+import { DefaultScreen } from '../../organisms'
 
 export const CommomTemplate: React.FC = () => {
   return (
-    <div>
-      <Header />
+    <DefaultScreen>
       <Outlet />
-    </div>
+    </DefaultScreen>
   )
 }

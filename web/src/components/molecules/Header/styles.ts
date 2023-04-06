@@ -3,11 +3,11 @@ import { Title } from '../../atoms'
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  height: 4rem;
-  background-color: ${({ theme }) => theme.color.gray};
+  min-height: 4rem;
+  background-color: ${({ theme }) => theme.color.gray700};
   display: flex;
   align-items: center;
-  padding-left: 1rem;
+  padding-left: 2rem;
 `
 
 export const HeaderTitle = styled(Title.H2)`
