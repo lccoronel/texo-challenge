@@ -11,4 +11,5 @@ export interface MoviesRepository {
   create(data: Prisma.MoviesCreateInput): Promise<Movies>
   findByTitle(title: string): Promise<Movies | null>
   findMultipleWinnersByYear(): Promise<MultipleWinnersByYearProps | null>
+  findStudioWithWinners(): Promise<any>
 }

@@ -1,10 +1,5 @@
-import { RegisterMovieUseCase } from '@/use-cases/register-movie'
-import { UploadMoviesSeed } from './uploadMovies'
-import { PrismaMoviesRepository } from '@/repositories/movies/prisma-movies-repository'
+import { makeuploadMovies } from './uploadMovies/factories/make-upload-movies'
 
-const moviesRepository = new PrismaMoviesRepository()
-const registerMovieUseCase = new RegisterMovieUseCase(moviesRepository)
+const uploadMovies = makeuploadMovies()
 
-const uploadMovies = new UploadMoviesSeed(registerMovieUseCase)
-
-uploadMovies.execute()
+uploadMovies.execute().then(() => console.log('Uploaded movies'))

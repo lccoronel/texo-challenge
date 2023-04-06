@@ -3,6 +3,23 @@ import { Movies, Prisma } from '@prisma/client'
 import { MoviesRepository } from './movies-repository'
 
 export class PrismaMoviesRepository implements MoviesRepository {
+  async findStudioWithWinners(): Promise<any> {
+    const movies = await prisma.movies.groupBy({
+      by: ['studios'],
+      _count: {
+        winner: true,
+      },
+      orderBy: {
+        _count: {
+          winner: 'desc',
+        },
+      },
+      take: 3,
+    })
+
+    return movies
+  }
+
   async findMultipleWinnersByYear(): Promise<any> {
     const movies = await prisma.movies.groupBy({
       by: ['year'],
