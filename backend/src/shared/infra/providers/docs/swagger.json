@@ -1,0 +1,120 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Texo challenge documentation",
+        "description": "This is an API rest",
+        "version": "1.0.0",
+        "contact": {
+            "email": "lucascoronel0597@gmail.com"
+        }
+    },
+    "paths": {
+        "/movies": {
+            "get": {
+                "tags": [
+                    "Movies"
+                ],
+                "summary": "Get all movies",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                              "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "content": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "year":  {
+                                                    "type": "number"
+                                                },
+                                                "title":  {
+                                                    "type": "string"
+                                                },
+                                                "studios":  {
+                                                    "type": "string"
+                                                },
+                                                "producers":  {
+                                                    "type": "string"
+                                                },
+                                                "winner":  {
+                                                    "type": "boolean"
+                                                },
+                                                "created_at": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "pageable": {
+                                        "type": "object",
+                                        "properties": {
+                                            "sort": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "sorted": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "unsorted": {
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                                
+                                            },
+                                            "pageSize": {
+                                                "type": "number"
+                                            },
+                                            "pageNumber": {
+                                                "type": "number"
+                                            },
+                                            "offset": {
+                                                "type": "boolean"
+                                            },
+                                            "paged": {
+                                                "type": "boolean"
+                                            },
+                                            "unpaged": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    },
+                                    "totalElements": {
+                                        "type": "number"
+                                    },
+                                    "last": {
+                                        "type": "boolean"
+                                    },
+                                    "totalPages": {
+                                        "type": "number"
+                                    },
+                                    "first": {
+                                        "type": "boolean"
+                                    },
+                                    "number": {
+                                        "type": "number"
+                                    },
+                                    "numberOfElements": {
+                                        "type": "number"
+                                    },
+                                    "size": {
+                                        "type": "number"
+                                    }
+                                }
+                              }
+                            }
+                          }
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        }
+    }
+}

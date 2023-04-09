@@ -1,12 +1,15 @@
 import 'express-async-errors'
 import express, { Request, Response, NextFunction } from 'express'
+import swaggerUI from 'swagger-ui-express'
 
 import { env } from '@/shared/infra/env'
 import { AppError } from '@/shared/errors/app-error'
+import * as swaggerFile from '@/shared/infra/providers/docs/swagger.json'
 import { router } from './routes'
 
 export const app = express()
 
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerFile))
 app.use(router)
 
 app.use(
