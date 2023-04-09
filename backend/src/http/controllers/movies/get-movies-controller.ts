@@ -1,4 +1,5 @@
-import { FastifyReply, FastifyRequest } from 'fastify'
+import { Request, Response } from 'express'
+
 import { makeStudiosWithWinners } from './factories/make-studios-with-winners'
 import { makeListYearsWithMultiplesWinners } from './factories/make-list-years-with-multiples-winners'
 import { makeAwardsInterval } from './factories/make-awards-interval'
@@ -15,42 +16,42 @@ interface GetMoviesQuery {
   year: string
 }
 
-export class GetMovies {
-  async execute(request: FastifyRequest, reply: FastifyReply) {
+export class GetMoviesController {
+  async handle(request: Request, response: Response) {
     const { projection, page, size, winner, year } =
-      request.query as GetMoviesQuery
+      request.query as unknown as GetMoviesQuery
 
     if (projection === 'studios-with-win-count') {
       const studiosWithWinnersUseCase = makeStudiosWithWinners()
-      const response = await studiosWithWinnersUseCase.execute()
+      const result = await studiosWithWinnersUseCase.execute()
 
-      return reply.status(200).send({ studios: response })
+      return response.status(200).send({ studios: result })
     }
 
     if (projection === 'years-with-multiple-winners') {
       const listYearsWithMultipleWinnersUseCase =
         makeListYearsWithMultiplesWinners()
 
-      const response = await listYearsWithMultipleWinnersUseCase.execute()
+      const result = await listYearsWithMultipleWinnersUseCase.execute()
 
-      return reply.status(200).send({ years: response })
+      return response.status(200).send({ years: result })
     }
 
     if (projection === 'max-min-win-interval-for-producers') {
       const awardsIntervalUseCase = makeAwardsInterval()
-      const response = await awardsIntervalUseCase.execute()
+      const result = await awardsIntervalUseCase.execute()
 
-      return reply.status(201).send(response)
+      return response.status(201).send(result)
     }
 
     const getAllMoviesUseCase = makeGetAllMovies()
-    const response = await getAllMoviesUseCase.execute({
+    const movies = await getAllMoviesUseCase.execute({
       size: Number(size) || undefined,
       page: Number(page) - 1 || undefined,
       winner: Boolean(winner),
       year: Number(year) || undefined,
     })
 
-    return reply.status(200).send(response)
+    return response.status(200).send(movies)
   }
 }
