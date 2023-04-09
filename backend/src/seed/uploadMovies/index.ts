@@ -3,7 +3,7 @@ import path from 'path'
 import { parse } from 'csv-parse'
 import { Movie } from '@/modules/movies/dtos/movie'
 import { RegisterMovieUseCase } from '@/modules/movies/use-cases/register-movie'
-import { MovieAlreadyExistserror } from '@/modules/movies/use-cases/errors/movie-already-exists-error'
+import { AppError } from '@/shared/errors/app-error'
 
 export class UploadMoviesSeed {
   constructor(private registerMovieUseCase: RegisterMovieUseCase) {}
@@ -49,7 +49,7 @@ export class UploadMoviesSeed {
       try {
         await this.registerMovieUseCase.execute(movie)
       } catch (error) {
-        if (error instanceof MovieAlreadyExistserror) {
+        if (error instanceof AppError) {
           console.log(error.message)
           return
         }

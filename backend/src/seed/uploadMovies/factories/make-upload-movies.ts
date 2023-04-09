@@ -1,5 +1,5 @@
-import { PrismaMoviesRepository } from '@/repositories/movies/prisma-movies-repository'
 import { RegisterMovieUseCase } from '@/modules/movies/use-cases/register-movie'
+import { PrismaMoviesRepository } from '@/modules/movies/repositories/prisma-movies-repository'
 import { UploadMoviesSeed } from '..'
 
 export function makeuploadMovies() {
