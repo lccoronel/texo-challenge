@@ -1,8 +1,8 @@
 import {
   MoviesRepository,
   ProducersWinnersProps,
-} from '@/repositories/movies/movies-repository'
-import { ProducersWinnersEmptyListError } from './errors/producers-winners-empty-list-error'
+} from '@/modules/movies/repositories/movies-repository'
+import { AppError } from '@/shared/errors/app-error'
 
 interface Producers {
   producer: string
@@ -92,7 +92,7 @@ export class AwardsIntervalUseCase {
     const producersWinnersList =
       await this.moviesRepository.getProducersWinners()
 
-    if (!producersWinnersList) throw new ProducersWinnersEmptyListError()
+    if (!producersWinnersList) throw new AppError('There is not producers list')
 
     const formattedProducers = this.producersFormatter(producersWinnersList)
     const { maxResult, minResult } = this.getYearsInterval(formattedProducers)

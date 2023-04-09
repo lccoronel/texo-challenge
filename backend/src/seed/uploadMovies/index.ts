@@ -1,9 +1,9 @@
 import fs from 'fs'
 import path from 'path'
 import { parse } from 'csv-parse'
-import { Movie } from '@/dtos/movie'
-import { RegisterMovieUseCase } from '@/use-cases/register-movie'
-import { MovieAlreadyExistserror } from '@/use-cases/errors/movie-already-exists-error'
+import { Movie } from '@/modules/movies/dtos/movie'
+import { RegisterMovieUseCase } from '@/modules/movies/use-cases/register-movie'
+import { MovieAlreadyExistserror } from '@/modules/movies/use-cases/errors/movie-already-exists-error'
 
 export class UploadMoviesSeed {
   constructor(private registerMovieUseCase: RegisterMovieUseCase) {}

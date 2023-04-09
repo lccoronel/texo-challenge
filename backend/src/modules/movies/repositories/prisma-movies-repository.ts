@@ -1,5 +1,6 @@
-import prisma from '@/lib/prisma/client'
 import { Movies, Prisma } from '@prisma/client'
+
+import database from '@/shared/infra/providers/database'
 import {
   GetAllParams,
   GetAllResponseProps,
@@ -13,13 +14,13 @@ export class PrismaMoviesRepository implements MoviesRepository {
     winner,
     year,
   }: GetAllParams): Promise<GetAllResponseProps | null> {
-    const [movies, total] = await prisma.$transaction([
-      prisma.movies.findMany({
+    const [movies, total] = await database.$transaction([
+      database.movies.findMany({
         take: size,
         skip: page,
         where: { year, winner },
       }),
-      prisma.movies.count(),
+      database.movies.count(),
     ])
 
     const totalPages = Math.ceil(total / size)
@@ -28,7 +29,7 @@ export class PrismaMoviesRepository implements MoviesRepository {
   }
 
   async getProducersWinners(): Promise<any> {
-    return prisma.movies.findMany({
+    return database.movies.findMany({
       where: {
         winner: true,
       },
@@ -40,7 +41,7 @@ export class PrismaMoviesRepository implements MoviesRepository {
   }
 
   async findStudioWithWinners(): Promise<any> {
-    const movies = await prisma.movies.groupBy({
+    const movies = await database.movies.groupBy({
       by: ['studios'],
       _count: {
         winner: true,
@@ -57,7 +58,7 @@ export class PrismaMoviesRepository implements MoviesRepository {
   }
 
   async findMultipleWinnersByYear(): Promise<any> {
-    const movies = await prisma.movies.groupBy({
+    const movies = await database.movies.groupBy({
       by: ['year'],
       _count: {
         winner: true,
@@ -74,7 +75,7 @@ export class PrismaMoviesRepository implements MoviesRepository {
   }
 
   async findByTitle(title: string): Promise<Movies | null> {
-    const movie = await prisma.movies.findUnique({
+    const movie = await database.movies.findUnique({
       where: { title },
     })
 
@@ -82,7 +83,7 @@ export class PrismaMoviesRepository implements MoviesRepository {
   }
 
   async create(data: Prisma.MoviesCreateInput): Promise<Movies> {
-    const movie = await prisma.movies.create({
+    const movie = await database.movies.create({
       data,
     })
 

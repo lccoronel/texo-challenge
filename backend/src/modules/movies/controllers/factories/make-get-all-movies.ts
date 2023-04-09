@@ -1,5 +1,5 @@
-import { PrismaMoviesRepository } from '@/repositories/movies/prisma-movies-repository'
-import { GetAllMoviesUseCase } from '@/use-cases/get-all-movies-use-case'
+import { PrismaMoviesRepository } from '@/modules/movies/repositories/prisma-movies-repository'
+import { GetAllMoviesUseCase } from '@/modules/movies/use-cases/get-all-movies-use-case'
 
 export function makeGetAllMovies() {
   const moviesRepository = new PrismaMoviesRepository()

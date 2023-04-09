@@ -1,4 +1,4 @@
 import { app } from './app'
-import { env } from '@/env'
+import { env } from '@/shared/infra/env'
 
-app.listen(3333, () => console.log(`Server is running on ${env.PORT} 3333 🚀`))
+app.listen(3333, () => console.log(`Server is running on ${env.PORT} 🚀`))

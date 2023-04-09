@@ -1,4 +1,4 @@
-import { MoviesRepository } from '@/repositories/movies/movies-repository'
+import { MoviesRepository } from '@/modules/movies/repositories/movies-repository'
 
 export class ListYearsWithMultipleWinnersUseCase {
   constructor(private moviesRepository: MoviesRepository) {}

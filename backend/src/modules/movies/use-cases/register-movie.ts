@@ -1,6 +1,6 @@
-import { MoviesRepository } from '@/repositories/movies/movies-repository'
-import { MovieAlreadyExistserror } from './errors/movie-already-exists-error'
-import { Movie } from '@/dtos/movie'
+import { MoviesRepository } from '@/modules/movies/repositories/movies-repository'
+import { Movie } from '@/modules/movies/dtos/movie'
+import { AppError } from '@/shared/errors/app-error'
 
 export class RegisterMovieUseCase {
   constructor(private moviesRepository: MoviesRepository) {}
@@ -10,7 +10,7 @@ export class RegisterMovieUseCase {
       params.title,
     )
 
-    if (moviesAlreadyExists) throw new MovieAlreadyExistserror()
+    if (moviesAlreadyExists) throw new AppError('Movie already exists')
 
     const movie = await this.moviesRepository.create(params)
 

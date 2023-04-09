@@ -1,5 +1,5 @@
-import { PrismaMoviesRepository } from '@/repositories/movies/prisma-movies-repository'
-import { StudiosWithWinnersUseCase } from '@/use-cases/studio-with-winners-use-case'
+import { PrismaMoviesRepository } from '@/modules/movies/repositories/prisma-movies-repository'
+import { StudiosWithWinnersUseCase } from '@/modules/movies/use-cases/studio-with-winners-use-case'
 
 export function makeStudiosWithWinners() {
   const moviesRepository = new PrismaMoviesRepository()

@@ -1,4 +1,4 @@
-import { GetMoviesController } from '@/http/controllers/movies/get-movies-controller'
+import { GetMoviesController } from '@/modules/movies/controllers/get-movies-controller'
 import { Router } from 'express'
 
 export const moviesRouter = Router()

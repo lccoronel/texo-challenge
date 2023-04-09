@@ -1,7 +1,8 @@
+import 'express-async-errors'
 import express, { Request, Response, NextFunction } from 'express'
 
-import { env } from '@/env'
-import { AppError } from '@/shared/errors/AppError'
+import { env } from '@/shared/infra/env'
+import { AppError } from '@/shared/errors/app-error'
 import { router } from './routes'
 
 export const app = express()
