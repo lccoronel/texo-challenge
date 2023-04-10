@@ -13,7 +13,7 @@ To run project, follow the steps(this project using the 18.15.0 node version):
 * Clone repo
 * Run `npm i` to install all dependencies
 * Add `.env` file, just copy the `.env.example` and set the port, but if if don't pass any port, 3333 is the default port
-* Run `npx prisma migrate` to setup all migrations
+* Run `npx prisma migrate dev` to setup all migrations
 * Run `npm run seed` to populate database
 * Run `npm run start:dev` to run the project 
 
