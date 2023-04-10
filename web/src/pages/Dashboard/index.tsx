@@ -28,7 +28,7 @@ export const Dashboard: React.FC = () => {
     e.preventDefault()
 
     const response = await api.get(`movies?winner=true&year=${winnerYear}`)
-    setWinners(response.data.content[0])
+    setWinners(response.data)
   }
 
   return (
@@ -120,13 +120,13 @@ export const Dashboard: React.FC = () => {
             <th>Year</th>
             <th>title</th>
           </tr>
-          {winners && (
-            <tr>
-              <td>{winners.id}</td>
-              <td>{winners.year}</td>
-              <td>{winners.title}</td>
+          {winners?.content.map((movie) => (
+            <tr key={movie.id}>
+              <td>{movie.id}</td>
+              <td>{movie.year}</td>
+              <td>{movie.title}</td>
             </tr>
-          )}
+          ))}
         </Table>
       </DivWithShadow>
     </Container>

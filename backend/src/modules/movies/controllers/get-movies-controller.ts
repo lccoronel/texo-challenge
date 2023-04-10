@@ -48,7 +48,7 @@ export class GetMoviesController {
     const movies = await getAllMoviesUseCase.execute({
       size: Number(size) || undefined,
       page: Number(page) - 1 || undefined,
-      winner: Boolean(winner),
+      winner: winner === 'true',
       year: Number(year) || undefined,
     })
 

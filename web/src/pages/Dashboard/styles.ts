@@ -6,6 +6,11 @@ export const Container = styled.div`
   grid-template-columns: auto auto;
   grid-gap: 1rem;
   padding: 1rem 3rem;
+
+  @media only screen and (max-width: 1280px) {
+    display: grid;
+    grid-template-columns: auto;
+  }
 `
 
 export const TableTitle = styled(Title.H2)`

@@ -1,19 +1,22 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
-import { Container } from './styles'
-import { Title } from '../../components/atoms'
-import { Table } from '../../components/molecules'
 import { api } from '../../services/api'
+import { Title } from '../../components/atoms'
+import { Pagination, Table } from '../../components/molecules'
+import { Container } from './styles'
 
-export const LIst: React.FC = () => {
+export const List: React.FC = () => {
   const [winnersList, setWinnersList] = useState<List.WinnersList | undefined>()
   const [year, setYear] = useState('')
   const [winner, setWinner] = useState('')
+  const [page, setPage] = useState(1)
 
   const getAllMovies = useCallback(async () => {
-    const response = await api.get(`movies?winner=${winner}&year=${year}`)
+    const response = await api.get(
+      `movies?winner=${winner}&year=${year}&page=${page}`,
+    )
     setWinnersList(response.data)
-  }, [year, winner])
+  }, [year, winner, page])
 
   useEffect(() => {
     getAllMovies()
@@ -69,6 +72,10 @@ export const LIst: React.FC = () => {
           </tr>
         ))}
       </Table>
+      <Pagination
+        totalPages={winnersList.totalPages}
+        onPageChange={(selectedPage) => setPage(selectedPage)}
+      ></Pagination>
     </Container>
   )
 }

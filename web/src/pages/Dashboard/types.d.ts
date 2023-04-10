@@ -22,13 +22,15 @@ declare namespace Dashboard {
   }
 
   interface Winners {
-    id: string
-    year: number
-    title: string
-    studios: string
-    producers: string
-    winner: boolean
-    created_at: string
+    content: {
+      id: string
+      year: number
+      title: string
+      studios: string
+      producers: string
+      winner: boolean
+      created_at: string
+    }[]
   }
 
   interface Awards {

@@ -8,5 +8,9 @@ interface TableProps {
 }
 
 export const Table: React.FC<TableProps> = ({ columnWidth = 50, children }) => {
-  return <TableContainer columnWidth={columnWidth}>{children}</TableContainer>
+  return (
+    <TableContainer columnWidth={columnWidth}>
+      <tbody>{children}</tbody>
+    </TableContainer>
+  )
 }
