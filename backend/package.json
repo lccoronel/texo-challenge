@@ -6,8 +6,10 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
+    "seed:prod": "node build/seed",
     "seed": "tsx src/seed",
     "start:dev": "tsx watch src/shared/infra/http/server.ts",
+    "start:prod": "node build/shared/infra/http/server.js",
     "start": "node build/server.ts",
     "build": "tsup src --out-dir build",
     "studio": "npx prisma studio"
@@ -26,13 +28,13 @@
     "@types/swagger-ui-express": "4.1.3",
     "eslint": "8.37.0",
     "prisma": "4.12.0",
-    "tsup": "^6.7.0",
     "tsx": "^3.12.6",
     "typescript": "^5.0.3",
     "vite-tsconfig-paths": "4.0.8",
     "vitest": "0.29.8"
   },
   "dependencies": {
+    "tsup": "^6.7.0",
     "@prisma/client": "4.12.0",
     "cors": "2.8.5",
     "csv-parse": "5.3.6",
