@@ -1,14 +1,22 @@
 version: '3'
 
+volumes:
+  node-modules-backend:
+
 services: 
-  app-prod:
+  app:
     build:
       context: .
-      target: prod
-    container_name: backend-prod
+      target: dev
+    container_name: app
+    volumes: 
+      - .:/usr/src/app
+      - node-modules-backend:/usr/src/app/node_modules
+    tty: true
     ports: 
       - "3333:3333"
     environment: 
       PORT: ${PORT:-3333}
       DATABASE_URL: ${DATABASE_URL:-file:./database.db}
-      NODE_ENV: ${NODE_ENV:-prod} 
+      NODE_ENV: ${NODE_ENV:-development}
+      

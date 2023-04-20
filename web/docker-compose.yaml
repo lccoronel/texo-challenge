@@ -1,0 +1,16 @@
+version: '3'
+
+volumes:
+  node-modules-web:
+
+services:
+  web:
+    build:
+      context: .
+      target: dev
+    container_name: web
+    volumes: 
+      - .:/usr/app
+      - node-modules-web:/usr/app/node_modules
+    ports: 
+      - "5173:5173"

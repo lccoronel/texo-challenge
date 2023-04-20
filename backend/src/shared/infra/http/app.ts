@@ -16,7 +16,7 @@ app.use(router)
 
 app.use(
   (error: Error, request: Request, response: Response, next: NextFunction) => {
-    if (env.NODE_ENV === 'dev') {
+    if (env.NODE_ENV === 'development') {
       console.log(error)
     } else {
       // Datadog/Sentry

@@ -10,7 +10,12 @@ export class UploadMoviesSeed {
 
   loadMovies(): Promise<Movie[]> {
     return new Promise((resolve, reject) => {
-      const dirPath = path.join(__dirname, '..', '..', '..', 'movielist.csv')
+      const dirPath = path.join(
+        __dirname,
+        'uploadMovies',
+        'data',
+        'movielist.csv',
+      )
       const stream = fs.createReadStream(dirPath)
       const parseFile = parse({ delimiter: ';' })
       const movies: Movie[] = []
