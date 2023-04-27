@@ -13,8 +13,8 @@
     "start": "node build/server.ts",
     "build": "npm run pre-build && tsup src --out-dir build && npm run pos-build",
     "studio": "npx prisma studio",
-    "pre-build": "node scripts/build/preBuild.js",
-    "pos-build": "node scripts/build/posBuild.js"
+    "pre-build": "node scripts/buildScript/preBuild.js",
+    "pos-build": "node scripts/buildScript/posBuild.js"
   },
   "engines": {
     "node": "18"

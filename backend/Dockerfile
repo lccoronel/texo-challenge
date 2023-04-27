@@ -5,5 +5,5 @@ COPY . .
  
 
 FROM builder as prod
-RUN npm install --production
+RUN npm install --omit=dev
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"] 
