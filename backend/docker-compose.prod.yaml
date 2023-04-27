@@ -1,0 +1,14 @@
+version: '3'
+
+services: 
+  app-prod:
+    build:
+      context: .
+      target: prod
+    container_name: backend-prod
+    ports: 
+      - "3333:3333"
+    environment: 
+      PORT: ${PORT:-3333}
+      DATABASE_URL: ${DATABASE_URL:-file:./database.db}
+      NODE_ENV: ${NODE_ENV:-production} 
