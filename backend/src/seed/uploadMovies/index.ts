@@ -4,18 +4,21 @@ import { parse } from 'csv-parse'
 import { Movie } from '@/modules/movies/dtos/movie'
 import { RegisterMovieUseCase } from '@/modules/movies/use-cases/register-movie'
 import { AppError } from '@/shared/errors/app-error'
+import { env } from '@/shared/infra/env'
 
 export class UploadMoviesSeed {
   constructor(private registerMovieUseCase: RegisterMovieUseCase) {}
 
   loadMovies(): Promise<Movie[]> {
     return new Promise((resolve, reject) => {
-      const dirPath = path.join(
-        __dirname,
-        'uploadMovies',
-        'data',
-        'movielist.csv',
-      )
+      let dirPath: string
+
+      if (env.NODE_ENV === 'production') {
+        dirPath = path.join(__dirname, 'uploadMovies', 'data', 'movielist.csv')
+      } else {
+        dirPath = path.join(__dirname, 'data', 'movielist.csv')
+      }
+
       const stream = fs.createReadStream(dirPath)
       const parseFile = parse({ delimiter: ';' })
       const movies: Movie[] = []

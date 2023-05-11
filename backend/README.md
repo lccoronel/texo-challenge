@@ -45,7 +45,3 @@ Swager `/docs`
 
 
 I would have liked to have done more, but time was a factor that hindered me, I would have liked to have implemented tests, a better doc, among other things.
-
-FROM builder as dev
-RUN npm i 
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
