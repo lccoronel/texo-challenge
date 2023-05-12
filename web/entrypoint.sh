@@ -1,4 +1,8 @@
 #!/bin/bash
 set -e
-
-npm run dev
+if [[ $NODE_ENV = "development" ]] ; then
+    npm run dev
+else
+  make migrate-run ENV=production
+  make start
+fi

@@ -5,3 +5,7 @@ COPY . .
 FROM builder as dev
 RUN npm install
 ENTRYPOINT [ "/usr/app/entrypoint.sh" ]
+
+FROM buider as prod
+RUN npm run build
+ENTRYPOINT [ "/usr/app/entrypoint.sh" ]
