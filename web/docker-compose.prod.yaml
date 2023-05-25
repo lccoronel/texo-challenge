@@ -7,12 +7,11 @@ services:
   web:
     build:
       context: .
-      target: dev
+      target: prod
     container_name: web
     volumes: 
-      - .:/usr/app
       - node-modules-web:/usr/app/node_modules
     ports: 
-      - "5173:5173"
+      - "4173:4173"
     environment:
-      NODE_ENV: ${NODE_ENV:-development}
+      NODE_ENV: ${NODE_ENV:-prod}
