@@ -12,3 +12,4 @@ services:
       PORT: ${PORT:-3333}
       DATABASE_URL: ${DATABASE_URL:-file:./database.db}
       NODE_ENV: ${NODE_ENV:-production} 
+    restart: always
