@@ -11,7 +11,7 @@ services:
     container_name: web
     volumes: 
       - node-modules-web:/usr/app/node_modules
-    expose: 
-      - "4173"
+    ports: 
+      - "5173:5173"
     environment:
       NODE_ENV: ${NODE_ENV:-prod}
