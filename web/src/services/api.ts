@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export const api = axios.create({
-  baseURL: 'https://texo.lucascoronel.com',
+  baseURL: 'https://api.lucascoronel.com',
 })
