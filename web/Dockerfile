@@ -13,4 +13,4 @@ FROM node:18.5.0-bullseye-slim as prod
 WORKDIR /usr/app
 RUN npm install -g serve
 COPY --from=builder-prod /usr/app/dist /usr/app/dist
-ENTRYPOINT [ "serve", "-l", "4173", "-s", "dist" ]
+ENTRYPOINT [ "serve", "-l", "5173", "-s", "dist" ]
