@@ -22,7 +22,7 @@ jobs:
       - name: Install backend dependencies
         run: cd backend && npm i
 
-      - name: Run linters
+      - name: Run backend linter
         uses: wearerequired/lint-action@v2
         with:
           eslint: true
@@ -31,7 +31,7 @@ jobs:
       - name: Install web dependencies
         run: cd web && npm i
 
-      - name: Run linters
+      - name: Run web linter
         uses: wearerequired/lint-action@v2
         with:
           eslint: true
