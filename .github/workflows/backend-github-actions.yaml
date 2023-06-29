@@ -27,3 +27,12 @@ jobs:
         with:
           eslint: true
           eslint_dir: './backend'
+
+      - name: Install web dependencies
+        run: cd web && npm i
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          eslint: true
+          eslint_dir: './web'
