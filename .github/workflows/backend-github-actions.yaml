@@ -26,4 +26,4 @@ jobs:
         uses: wearerequired/lint-action@v2
         with:
           eslint: true
-          dir: './backend'
+          eslint_dir: './backend'
