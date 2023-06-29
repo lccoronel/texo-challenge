@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   code-quality:
-    name: Run linters
+    name: Code quality
     runs-on: ubuntu-latest
 
     steps:
@@ -36,3 +36,6 @@ jobs:
         with:
           eslint: true
           eslint_dir: './web'
+        
+      - name: Run tests
+        run: cd web && npm run test
