@@ -17,10 +17,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 18
+          node-version: 18.x
 
-      - name: Install Node.js dependencies
-        run: cd backend && npm ci
+      - name: Install backend dependencies
+        run: cd backend && npm i
 
       - name: Run linters
         uses: wearerequired/lint-action@v2
