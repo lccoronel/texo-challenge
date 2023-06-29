@@ -20,8 +20,7 @@ jobs:
           node-version: 18
 
       - name: Install Node.js dependencies
-        run: cd backend
-        run: npm ci
+        run: cd backend && npm ci
 
       - name: Run linters
         uses: wearerequired/lint-action@v2
