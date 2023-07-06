@@ -1,0 +1,21 @@
+name: CT
+on: 
+  pull_request: 
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+      
+jobs:
+  container-test-job:
+    runs-on: ubuntu-latest
+    container:
+      image: node:18.5.0-bullseye-slim
+      env:
+        NODE_ENV: development
+      ports:
+        - 3333
+      options: --cpus 1
+    steps:
+      - name: Check for dockerenv file
+        run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
