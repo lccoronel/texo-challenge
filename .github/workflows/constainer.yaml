@@ -10,12 +10,5 @@ jobs:
   container-test-job:
     runs-on: ubuntu-latest
     container:
-      image: node:18.5.0-bullseye-slim
-      env:
-        NODE_ENV: development
-      ports:
-        - 3333
-      options: --cpus 1
-    steps:
-      - name: Run Dockerfile
-        run: docker-compose up -d
+      image: lccoornel/codeeducation:latest
+    
