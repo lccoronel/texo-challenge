@@ -12,5 +12,5 @@ jobs:
     container:
       image: lccoornel/codeeducation:latest
     steps:
-      name: run image
-      run: docker run lccoornel/codeeducation:latest
+      - name: run image
+        run: docker run lccoornel/codeeducation:latest
