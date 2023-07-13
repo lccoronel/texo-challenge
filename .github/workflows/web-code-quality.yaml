@@ -46,8 +46,9 @@ jobs:
       - name: Run coverage test
         run: npm run test -- --coverage
       
-      - name: Code Coverage Report
-        uses: irongut/CodeCoverageSummary@v1.3.0
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
-          filename: ./coverage/clover.xml
-          format: markdown
+          name: build
+          path: artifact/
+          
