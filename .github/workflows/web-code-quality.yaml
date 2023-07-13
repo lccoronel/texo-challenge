@@ -45,6 +45,9 @@ jobs:
 
       - name: Run coverage test
         run: npm run test -- --coverage
+
+      - name: Create artifact path
+        run: mkdir artifact
       
       - name: Upload artifact
         uses: actions/upload-artifact@v3
