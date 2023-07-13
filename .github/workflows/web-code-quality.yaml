@@ -43,5 +43,11 @@ jobs:
       - name: Run tests
         run: npm run test
 
-      - name: Run coverage
-        uses: ArtiomTr/jest-coverage-report-action@v2
+      - name: Run coverage test
+        run: npm run test -- --coverage
+      
+      - name: Code Coverage Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        with:
+          filename: ./coverage/clover.xml
+          format: markdown
