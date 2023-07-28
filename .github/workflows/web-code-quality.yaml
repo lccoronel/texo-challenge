@@ -39,6 +39,23 @@ jobs:
         with:
           eslint: true
           eslint_dir: './web'
-        
-      - name: Run tests
-        run: npm run test
+
+      - name: Run coverage test
+        run: npm run test -- --coverage
+
+      - name: Run build
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: ./web/dist/
+
+  # build:
+  #   timeout-minutes: 5
+  #   name: Build
+  #   runs-on: ubuntu-latest
+
+
+    
